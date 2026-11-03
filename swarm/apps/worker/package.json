@@ -1,0 +1,21 @@
+{
+  "name": "@swarm/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/worker.ts",
+    "build": "esbuild src/worker.ts --bundle --platform=node --format=esm --target=node24 --outfile=dist/worker.mjs --external:node:*",
+    "start": "node dist/worker.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@swarm/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "esbuild": "^0.28.2",
+    "tsx": "^4.20.0",
+    "typescript": "5.9.3"
+  }
+}

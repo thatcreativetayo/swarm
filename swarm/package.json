@@ -1,0 +1,27 @@
+{
+  "name": "swarm",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "SWARM — Universal Autonomous AI Workforce",
+  "packageManager": "pnpm@11.8.0",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,web -c green,cyan \"pnpm dev:api\" \"pnpm dev:web\"",
+    "dev:api": "pnpm --filter @swarm/api dev",
+    "dev:web": "pnpm --filter @swarm/web dev",
+    "dev:worker": "pnpm --filter @swarm/worker dev",
+    "build": "pnpm --filter @swarm/web build && pnpm --filter @swarm/api build && pnpm --filter @swarm/worker build",
+    "start": "node apps/api/dist/server.mjs",
+    "worker": "node apps/worker/dist/worker.mjs",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "5.9.3"
+  }
+}
